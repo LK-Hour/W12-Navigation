@@ -79,7 +79,7 @@ class _NewItemState extends State<NewItem> {
     final newGrocery = Grocery(
       id: DateTime.now().toString(),
       name: enteredName,
-      quantity: enteredQuantity ?? defaultQuantity,
+      quantity: enteredQuantity,
       category: _selectedCategory,
     );
     Navigator.of(context).pop(newGrocery);
