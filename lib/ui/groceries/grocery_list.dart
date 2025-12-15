@@ -43,6 +43,11 @@ class _GroceryListState extends State<GroceryList> {
         itemBuilder: (ctx, index) => GroceryTile(
           key: ValueKey(dummyGroceryItems[index].id),
           grocery: dummyGroceryItems[index],
+          onUpdate: (updatedGrocery) {
+            setState(() {
+              dummyGroceryItems[index] = updatedGrocery;
+            });
+          },
         ),
       );
     }
@@ -58,9 +63,10 @@ class _GroceryListState extends State<GroceryList> {
 }
 
 class GroceryTile extends StatelessWidget {
-  const GroceryTile({super.key, required this.grocery});
+  const GroceryTile({super.key, required this.grocery, required this.onUpdate});
 
   final Grocery grocery;
+  final void Function(Grocery) onUpdate;
 
   @override
   Widget build(BuildContext context) {
@@ -72,6 +78,25 @@ class GroceryTile extends StatelessWidget {
       subtitle: Text(
         '${grocery.category.label} - Quantity: ${grocery.quantity}',
       ),
+      onTap: () async {
+        final updatedGrocery = await Navigator.of(context).push<Grocery>(
+          MaterialPageRoute(builder: (context) => NewItem(grocery: grocery)),
+        );
+        if (updatedGrocery != null) {
+          onUpdate(updatedGrocery);
+        }
+      },
     );
   }
 }
+  // void onCreate() async {
+  //   // TODO-4 - Navigate to the form screen using the Navigator push
+  //   final newItem = await Navigator.of(
+  //     context,
+  //   ).push<Grocery>(MaterialPageRoute(builder: (context) => const NewItem()));
+  //   if (newItem != null) {
+  //     setState(() {
+  //       dummyGroceryItems.add(newItem);
+  //     });
+  //   }
+  // }

@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import '../../data/models/grocery.dart';
 
 class NewItem extends StatefulWidget {
-  const NewItem({super.key});
+  const NewItem({super.key, this.grocery});
+
+  final Grocery? grocery;
 
   @override
   State<NewItem> createState() {
@@ -12,23 +14,25 @@ class NewItem extends StatefulWidget {
 
 class _NewItemState extends State<NewItem> {
   // Default settings
-  static const defautName = "New grocery";
   static const defaultQuantity = 1;
   static const defaultCategory = GroceryCategory.fruit;
 
   // Inputs
   final _nameController = TextEditingController();
   final _quantityController = TextEditingController();
-  GroceryCategory _selectedCategory = defaultCategory;
+  late GroceryCategory _selectedCategory =
+      widget.grocery?.category ?? defaultCategory;
   String? _nameError;
+  String? _quantityError;
 
   @override
   void initState() {
     super.initState();
 
     // Initialize intputs with default settings
-    _nameController.text = defautName;
-    _quantityController.text = defaultQuantity.toString();
+    _nameController.text = widget.grocery?.name ?? "New grocery";
+    _quantityController.text =
+        widget.grocery?.quantity.toString() ?? defaultQuantity.toString();
   }
 
   @override
@@ -51,14 +55,23 @@ class _NewItemState extends State<NewItem> {
 
     setState(() {
       _nameError = null;
+      _quantityError = null;
     });
 
     if (enteredName.isEmpty ||
         enteredName.trim().isEmpty ||
-        enteredName == defautName) {
+        enteredName == (widget.grocery?.name ?? "New grocery")) {
       // Show error message
       setState(() {
         _nameError = "Please enter a valid name.";
+      });
+      return;
+    }
+
+    if (enteredQuantity == null || enteredQuantity <= 0) {
+      // Show error message
+      setState(() {
+        _quantityError = "Please enter a valid quantity.";
       });
       return;
     }
@@ -84,7 +97,7 @@ class _NewItemState extends State<NewItem> {
               controller: _nameController,
               maxLength: 50,
               decoration: InputDecoration(
-                label: Text('Name'),
+                label: const Text('Name'),
                 errorText: _nameError,
               ),
             ),
@@ -95,7 +108,10 @@ class _NewItemState extends State<NewItem> {
                 Expanded(
                   child: TextField(
                     controller: _quantityController,
-                    decoration: const InputDecoration(label: Text('Quantity')),
+                    decoration: InputDecoration(
+                      label: const Text('Quantity'),
+                      errorText: _quantityError,
+                    ),
                   ),
                 ),
                 const SizedBox(width: 8),
