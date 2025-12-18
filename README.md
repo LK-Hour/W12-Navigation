@@ -2,6 +2,9 @@
 
 A Flutter application for managing your grocery shopping list. Add, view, and organize grocery items by category with a simple and intuitive interface.
 
+**Developer:** [LK-Hour](https://github.com/LK-Hour)  
+**Repository:** [W12-Navigation](https://github.com/LK-Hour/W12-Navigation)
+
 ## Features
 
 - ✅ View grocery list with categorized items
@@ -232,10 +235,84 @@ class Grocery {
 - [Flutter Widget Catalog](https://docs.flutter.dev/ui/widgets)
 - [State Management](https://docs.flutter.dev/data-and-backend/state-mgmt/intro)
 
+## Contributing
+
+Contributions are welcome! If you'd like to contribute to this project, please follow these steps:
+
+### How to Contribute
+
+1. **Fork the repository**
+   ```bash
+   # Click the 'Fork' button at the top of this repository
+   ```
+
+2. **Clone your fork**
+   ```bash
+   git clone https://github.com/YOUR-USERNAME/W12-Navigation.git
+   cd grocery_app
+   ```
+
+3. **Create a new branch**
+   ```bash
+   git checkout -b feature/your-feature-name
+   ```
+
+4. **Make your changes**
+   - Add new features
+   - Fix bugs
+   - Improve documentation
+   - Add tests
+
+5. **Commit your changes**
+   ```bash
+   git add .
+   git commit -m "Add: Brief description of your changes"
+   ```
+
+6. **Push to your fork**
+   ```bash
+   git push origin feature/your-feature-name
+   ```
+
+7. **Create a Pull Request**
+   - Go to the original repository
+   - Click "New Pull Request"
+   - Select your branch
+   - Describe your changes in detail
+
+### Contribution Guidelines
+
+- **Code Style**: Follow Flutter/Dart style guidelines
+- **Commit Messages**: Use clear, descriptive commit messages
+- **Documentation**: Update README if you add new features
+- **Testing**: Test your changes on multiple platforms if possible
+- **Issues**: Check existing issues before creating new ones
+
+### Areas for Contribution
+
+- 🐛 Bug fixes
+- ✨ New features (categories, search, filters)
+- 📝 Documentation improvements
+- 🎨 UI/UX enhancements
+- 🧪 Adding tests
+- 🌐 Internationalization (i18n)
+- ♿ Accessibility improvements
+
+### Questions or Issues?
+
+- Open an [issue](https://github.com/LK-Hour/W12-Navigation/issues)
+- Contact the developer: [LK-Hour](https://github.com/LK-Hour)
+
 ## License
 
 This project is for educational purposes.
 
-## Author
+## Developer
 
-LK-Hour - [GitHub](https://github.com/LK-Hour)
+**LK-Hour**
+- GitHub: [@LK-Hour](https://github.com/LK-Hour)
+- Repository: [W12-Navigation](https://github.com/LK-Hour/W12-Navigation)
+
+---
+
+*Developed with ❤️ using Flutter*
